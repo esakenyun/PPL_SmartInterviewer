@@ -3,8 +3,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa6";
-export default function LoginPageComponent() {
+export default function LoginPageComponent({ props }) {
   const [showPassword, setShowPassword] = useState(false);
+
+  const email = props.email;
+  const password = props.password;
+
+  const handleEmailChange = props.handleEmailChange;
+  const handlePasswordChange = props.handlePasswordChange;
+  const handleSubmit = props.handleSubmit;
+
+  const isLoading = props.isLoading;
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -16,10 +25,19 @@ export default function LoginPageComponent() {
           <div className="text-center bg-varians-vr06 py-10 px-10 md:px-16 rounded-3xl">
             <p className="font-bold text-4xl">Sign in</p>
             <p className="w-[270px] py-3 text-md">Hey, Enter your details to sign up to your account</p>
-            <form action="" className="flex flex-col">
-              <input className="p-2 mt-3 rounded-lg border border-black text-xs" type="email" name="email" required autoComplete="username" placeholder="Email" />
+            <form onSubmit={handleSubmit} className="flex flex-col">
+              <input className="p-2 mt-3 rounded-lg border border-black text-xs" type="email" name="email" required autoComplete="email" value={email} onChange={handleEmailChange} placeholder="Email" />
               <div className="relative mt-3">
-                <input className="p-2 pr-10 rounded-lg border w-full border-black text-xs" type={showPassword ? "text" : "password"} name="password" required autoComplete="password" placeholder="Password" />
+                <input
+                  className="p-2 pr-10 rounded-lg border w-full border-black text-xs"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                  autoComplete="password"
+                  placeholder="Password"
+                />
                 <div className="absolute inset-y-0 right-0 flex items-center pr-3">
                   {showPassword ? (
                     <div onClick={togglePasswordVisibility} className="text-xs cursor-pointer">
@@ -41,7 +59,9 @@ export default function LoginPageComponent() {
                 </p>
               </div>
               <div className="pt-4">
-                <button className="py-2 bg-[#FA5F47] text-varians-vr06 font-bold w-full rounded-md hover:scale-105">Sign in</button>
+                <button type="submit" disabled={isLoading} className="py-2 bg-[#FA5F47] text-varians-vr06 font-bold w-full rounded-md hover:scale-105">
+                  {isLoading ? "Sign in..." : "Sign in"}
+                </button>
               </div>
             </form>
             <p className="text-[10px] font-semibold py-6">- Or Sign in with -</p>
