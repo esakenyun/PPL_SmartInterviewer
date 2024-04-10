@@ -3,13 +3,13 @@ import Cookies from "js-cookie";
 
 export async function handleRegister(email, password) {
   try {
-    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/login", {
+    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/register", {
       email: email,
       password: password,
     });
-    console.log(response);
-    if (response.statusCode === 200) {
-      console.table(response.data);
+    // console.log(response);
+    if (response.status === 201) {
+      // console.table(response.data);
       return true;
     }
   } catch (error) {
@@ -24,11 +24,10 @@ export async function handleLogin(email, password) {
       email: email,
       password: password,
     });
-    console.log(response);
     if (response.status === 200) {
-      console.table(response.data);
+      // console.table(response.data);
       const token = response.data.data.token;
-      console.log(token);
+      // console.log(token);
       Cookies.set("token", token, { expires: 1 });
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       return true;
@@ -45,9 +44,9 @@ export async function handleLogout() {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    console.log(token);
+    // console.log(token);
     const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/logout");
-    console.log(response);
+    // console.log(response);
     Cookies.remove("token");
     return true;
   } catch (error) {
