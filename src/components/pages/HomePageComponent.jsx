@@ -10,7 +10,7 @@ export default function HomePageComponent() {
           <p className="font-extralight text-5xl md:text-7xl leading-none -mt-2 md:-mt-5">Interviewer</p>
           <p className="py-7 font-light text-[8px] w-64 md:w-[370px] md:text-sm">Get ready to approach interviews with confidence and lay the groundwork for your career success with Smart Interviewer Trainer AI</p>
           <Link href="/auth">
-            <button className="py-2 px-7 bg-gradient-to-b from-[#F27C45] to-[#FF5049] rounded-full text-lg hover:scale-105 border border-black z-50 absolute">Start Now</button>
+            <button className="py-2 px-7 bg-gradient-to-b from-[#F27C45] to-[#FF5049] rounded-full text-lg hover:scale-105 border border-black z-10 lg:absolute">Start Now</button>
           </Link>
         </div>
         <Image src="/header_pict.png" width={500} height={500} className="hidden lg:block w-auto h-auto" alt="home" priority />
