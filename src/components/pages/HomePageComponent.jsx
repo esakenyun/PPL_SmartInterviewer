@@ -1,14 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 export default function HomePageComponent() {
   return (
     <>
       {/* Home Section */}
       <div className="flex justify-start items-center text-varians-vr06 px lg:justify-center md:gap-16 py-5">
-        <div className="pl-5 py-28 md:py-40 lg:pl-0 lg:py-0">
+        <div className="pl-5 py-32 md:py-40 lg:pl-0 lg:py-0 lg:mb-28">
           <p className="font-extrabold text-5xl md:text-7xl leading-none">Smart</p>
           <p className="font-extralight text-5xl md:text-7xl leading-none -mt-2 md:-mt-5">Interviewer</p>
           <p className="py-7 font-light text-[8px] w-64 md:w-[370px] md:text-sm">Get ready to approach interviews with confidence and lay the groundwork for your career success with Smart Interviewer Trainer AI</p>
-          <button className="py-2 px-7 bg-gradient-to-b from-[#F27C45] to-[#FF5049] rounded-full text-lg hover:scale-105 border border-black">Start Now</button>
+          <Link href="/auth">
+            <button className="py-2 px-7 bg-gradient-to-b from-[#F27C45] to-[#FF5049] rounded-full text-lg hover:scale-105 border border-black z-50 absolute">Start Now</button>
+          </Link>
         </div>
         <Image src="/header_pict.png" width={500} height={500} className="hidden lg:block w-auto h-auto" alt="home" priority />
       </div>
@@ -83,7 +86,9 @@ export default function HomePageComponent() {
             </div>
           </div>
           <div className="flex justify-center text-varians-vr06">
-            <button className="py-4 px-6 rounded-full bg-gradient-to-b from-[#F27C45] to-[#FF5049] text-xs font-bold hover:scale-105 border border-black hidden md:block">Start Interview Now</button>
+            <Link href="/auth/signup">
+              <button className="py-4 px-6 rounded-full bg-gradient-to-b from-[#F27C45] to-[#FF5049] text-xs font-bold hover:scale-105 border border-black hidden md:block">Start Interview Now</button>
+            </Link>
           </div>
         </div>
       </div>
