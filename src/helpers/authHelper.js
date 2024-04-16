@@ -44,7 +44,7 @@ export async function handleLogout() {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    // console.log(token);
+    console.log(token);
     const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/logout");
     // console.log(response);
     Cookies.remove("token");

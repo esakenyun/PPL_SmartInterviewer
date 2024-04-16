@@ -5,3 +5,6 @@
 /* body {
   background-color: #2a292f;
 } */
+* {
+  scroll-behavior: smooth;
+}

@@ -26,8 +26,8 @@ export default function HomePageComponent() {
         <Image src="/header_pict.png" width={500} height={500} className="hidden md:block w-auto h-auto" alt="home" priority />
       </div> */}
       {/* Features */}
-      <div className="py-20 flex flex-col items-center md:py-32">
-        <p className="text-varians-vr06 text-2xl font-normal tracking-[0.2em] md:text-3xl md:tracking-[0.3em] ">Features</p>
+      <div className="py-20 flex flex-col items-center md:py-32" id="features">
+        <p className="text-varians-vr06 text-2xl font-normal tracking-[0.2em] md:text-3xl md:tracking-[0.3em]">Features</p>
         <p className="text-[#FA5F47] font-semibold text-xl mt-2 md:text-3xl">Practice Interview With AI</p>
         <div className="py-5 flex gap-10 flex-col items-center lg:flex-row">
           <div>
@@ -63,7 +63,7 @@ export default function HomePageComponent() {
       </div>
       {/* Tutorials */}
       <div className="py-8 md:py-10">
-        <div>
+        <div id="tutorials">
           <p className="text-center text-varians-vr06 text-4xl font-bold hidden md:block">Tutorials</p>
           <div className="py-5 flex gap-5 justify-center flex-col md:py-20 md:flex-row">
             <div className="flex flex-col items-center gap-2">

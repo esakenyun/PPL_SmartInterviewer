@@ -27,9 +27,10 @@ export default function Interview() {
             </div>
           </div>
           <form action="">
-            <div className="flex flex-col gap-4 justify-center">
+            <div className="flex flex-col gap-4 justify-center text-black">
               <input type="text" className="w-full p-2 rounded-full border-4 border-[#FA5F47] lg:p-6" placeholder="Job Detail" />
-              <input type="text" className="w-full h-60 p-2 rounded-3xl border-4 border-[#FA5F47] lg:h-64 lg:p-6" placeholder="Detail Jobdesc" />
+              {/* <input type="text" className="w-full pb-60 p-2 rounded-3xl border-4 border-[#FA5F47] lg:h-0 lg:pb-52 lg:p-6" placeholder="Detail Jobdesc" /> */}
+              <textarea name="" id="" cols="1" rows="1" className="w-full pb-60 p-2 rounded-3xl border-4 border-[#FA5F47] lg:h-0 lg:pb-52 lg:p-6 overflow-y-hidden resize-none" placeholder="Detail Jobdesc"></textarea>
             </div>
             <div className="mt-5 mb-20 flex justify-center lg:mb-0">
               <button className="py-3 px-7 rounded-full bg-gradient-to-b from-[#F27C45] to-[#FF5049] lg:border lg:border-black hover:scale-105"> Generate Now</button>

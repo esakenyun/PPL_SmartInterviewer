@@ -4,7 +4,7 @@ import HomePageComponent from "@/components/pages/HomePageComponent";
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className="bg-[#2a292f]">
+    <div className="bg-[#2a292f]" id="home">
       {/* Background */}
       <Image src="/bg_nav.png" width={10000} height={1000} alt="Background Navbar" className="absolute w-auto z-0" priority />
       {/* Navbar */}

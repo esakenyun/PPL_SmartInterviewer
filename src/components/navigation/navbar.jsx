@@ -13,9 +13,15 @@ export default function Navbar() {
         <div className="flex justify-between items-center">
           <Image src="/logo.png" width={300} height={300} alt="logo" className="w-auto" priority />
           <div className="flex items-center gap-7">
-            <p className="cursor-pointer text-lg">Home</p>
-            <p className="cursor-pointer text-lg">Features</p>
-            <p className="cursor-pointer text-lg">Tutorials</p>
+            <p className="cursor-pointer text-lg">
+              <Link href="#home">Home</Link>
+            </p>
+            <p className="cursor-pointer text-lg">
+              <Link href="#features">Features</Link>
+            </p>
+            <p className="cursor-pointer text-lg">
+              <Link href="#tutorials">Tutorials</Link>
+            </p>
             <p className="cursor-pointer text-lg">Reviews</p>
             <div className="flex gap-5">
               <Link href="/auth/signup" className="py-4 px-7 rounded-xl border-2 border-[#F37845] text-xs font-bold hover:bg-[#F37845]">

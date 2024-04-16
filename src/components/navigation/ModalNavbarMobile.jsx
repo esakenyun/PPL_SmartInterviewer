@@ -20,13 +20,19 @@ export default function ModalNavbarMobile({ isOpen, onClose }) {
           <nav className="flex flex-col mt-14 gap-14 text-2xl">
             <Image src="/logo.png" width={500} height={500} alt="logo" className="w-72 mb-5" priority />
             <ul className="cursor-pointer">
-              <li>Home</li>
+              <li>
+                <Link href="#home">Home</Link>
+              </li>
             </ul>
             <ul className="cursor-pointer">
-              <li>Features</li>
+              <li>
+                <Link href="#features">Features</Link>
+              </li>
             </ul>
             <ul className="cursor-pointer">
-              <li>Tutorials</li>
+              <li>
+                <Link href="#tutorials">Tutorials</Link>
+              </li>
             </ul>
             <ul className="cursor-pointer">
               <li>Reviews</li>

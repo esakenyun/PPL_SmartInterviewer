@@ -34,9 +34,13 @@ export default function SettingPageComponent({ props }) {
                   <MdOutlinePrivacyTip className="text-2xl" />
                   <p>Security</p>
                 </div>
+                <label className="relative cursor-pointer">
+                  <input type="checkbox" className="sr-only peer" />
+                  <div className="w-11 h-6 flex items-center bg-gray-300 rounded-full peer peer-checked:after:translate-x-full after:absolute after:left-[2px] peer-checked:after:border-white after:bg-white after:border after:border-gray-300 after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#FA5F47]"></div>
+                </label>
                 {/* <input type="checkbox" className="absolute left-1/2 -translate-x-1/2 w-full h-full peer appearance-none rounded-md" />
                 <span className="w-16 h-10 flex items-center flex-shrink-0 ml-4 p-1 bg-gray-300 rounded-full duration-300 ease-in-out peer-checked:bg-[#FA5F47] after:w-8 after:h-8 after:bg-white after:rounded-full after:shadow-md after:duration-300 peer-checked:after:translate-x-6 group-hover:after:translate-x-1"></span> */}
-                <IoIosArrowForward className="text-xl" />
+                {/* <IoIosArrowForward className="text-xl" /> */}
               </div>
               <div className="flex justify-between items-center lg:px-5 cursor-pointer">
                 <div className="flex gap-7">
