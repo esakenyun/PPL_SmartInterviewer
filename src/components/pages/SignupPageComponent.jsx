@@ -31,7 +31,7 @@ export default function SignupPageComponent({ props }) {
     <div className="flex justify-center md:py-32 lg:py-0">
       <div className="flex flex-row gap-24">
         <div className="flex flex-col items-center justify-center">
-          <div className="text-center bg-varians-vr06 py-10 px-10 md:px-16 rounded-3xl">
+          <div className="text-center bg-varians-vr06 py-10 px-[12%] md:px-16 rounded-3xl">
             <p className="font-bold text-4xl">Sign Up</p>
             <p className="w-[270px] py-3 text-md">Hey, Enter your details to sign up to your account</p>
             <form onSubmit={handleSubmit} className="flex flex-col">
@@ -101,15 +101,15 @@ export default function SignupPageComponent({ props }) {
             <div className="flex gap-2">
               <div className="flex items-center gap-1 border border-black py-2 px-3 rounded-full cursor-pointer hover:bg-black hover:text-varians-vr06">
                 <FaGoogle className="text-md" />
-                <p className="text-[10px] font-bold">Google</p>
+                <p className="text-[9px] md:text-[10px] font-bold">Google</p>
               </div>
               <div className="flex items-center gap-1 border border-black py-2 px-3 rounded-full cursor-pointer hover:bg-black hover:text-varians-vr06">
                 <FaApple className="text-md" />
-                <p className="text-[10px] font-bold">Apple ID</p>
+                <p className="text-[9px] md:text-[10px] font-bold">Apple ID</p>
               </div>
               <div className="flex items-center gap-1 border border-black py-2 px-3 rounded-full cursor-pointer hover:bg-black hover:text-varians-vr06">
                 <FaFacebook className="text-md" />
-                <p className="text-[10px] font-bold">Facebook</p>
+                <p className="text-[9px] md:text-[10px] font-bold">Facebook</p>
               </div>
             </div>
           </div>

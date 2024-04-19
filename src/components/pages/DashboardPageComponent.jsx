@@ -15,7 +15,7 @@ export default function DashboardPageComponent() {
             <p className="text-varians-vr06 text-xs lg:text-base ">John Doe</p>
           </div>
         </div>
-        {/* Summary Score*/}
+        {/* Summary Score Dekstop*/}
         <div className="flex gap-20 py-10 lg:px-5">
           <div className="relative w-1/4 hidden lg:block">
             <Image src="/dashboard.png" width={300} height={300} alt="Interview" className="h-auto w-auto" priority />
@@ -32,30 +32,62 @@ export default function DashboardPageComponent() {
               <p className="font-semibold">Summary Score</p>
             </div>
             <div className="flex py-5 gap-2 lg:py-7 lg:gap-7">
-              <div className="flex flex-col gap-3 items-center bg-primary-pr01 rounded-full py-10 px-5 text-white w-full md:rounded-2xl">
+              <div className="flex flex-col gap-3 items-center bg-primary-pr01 rounded-full py-10 text-white w-full md:rounded-2xl">
                 <div className="rounded-full border border-white py-2 px-2">
                   <BsClipboardData className="text-xl lg:text-3xl" />
                 </div>
-                <p className="text-xs text-center lg:text-xl">Average Score</p>
-                <p className="font-semibold">900</p>
+                <p className="text-[10px] text-center lg:text-xl">Average Score</p>
+                <p className="text-[10px] font-semibold lg:text-base">900</p>
               </div>
-              <div className="flex flex-col gap-3 items-center bg-[#F5764E] rounded-full py-10 px-5 text-white w-full md:rounded-2xl">
+              <div className="flex flex-col gap-3 items-center bg-[#F5764E] rounded-full py-10 text-white w-full md:rounded-2xl">
                 <div className="rounded-full border border-white py-2 px-2">
                   <BsPersonCheck className="text-xl lg:text-3xl" />
                 </div>
-                <p className="text-xs lg:text-xl">Interviews</p>
-                <p className="font-semibold">54</p>
+                <p className="text-[10px] lg:text-xl">Interviews</p>
+                <p className="text-[10px] font-semibold lg:text-base">54</p>
               </div>
-              <div className="flex flex-col gap-3 items-center bg-[#F1F5F9] rounded-full py-10 px-5 text-[#171717] w-full md:rounded-2xl">
+              <div className="flex flex-col gap-3 items-center bg-[#F1F5F9] rounded-full py-10 text-[#171717] w-full md:rounded-2xl">
                 <div className="rounded-full border border-[#171717] py-2 px-2">
                   <BsCalendar2Check className="text-xl lg:text-3xl" />
                 </div>
-                <p className="text-xs lg:text-xl">Answered</p>
-                <p className="font-semibold">900</p>
+                <p className="text-[10px] lg:text-xl">Answered</p>
+                <p className="text-[10px] font-semibold lg:text-base">900</p>
               </div>
             </div>
           </div>
         </div>
+        {/* Summary Score Mobile */}
+        {/* <div className="py-10 lg:hidden ">
+          <div className="bg-[#E2E8F0] w-full rounded-3xl px-3 py-7">
+            <div className="flex gap-2 items-center text-[#171717]">
+              <BsClipboardCheck className="text-2xl" />
+              <p className="font-semibold">Summary Score</p>
+            </div>
+            <div className="flex py-5 gap-2 lg:py-7 lg:gap-7">
+              <div className="flex flex-col gap-3 items-center bg-primary-pr01 rounded-full py-10 px-3 text-white w-full md:rounded-2xl">
+                <div className="rounded-full border border-white py-2 px-2">
+                  <BsClipboardData className="text-xl lg:text-3xl" />
+                </div>
+                <p className="text-[10px] text-center lg:text-xl">Average Score</p>
+                <p className="text-[10px] font-semibold lg:text-base">900</p>
+              </div>
+              <div className="flex flex-col gap-3 items-center bg-[#F5764E] rounded-full py-10 px-3 text-white w-full md:rounded-2xl">
+                <div className="rounded-full border border-white py-2 px-2">
+                  <BsPersonCheck className="text-xl lg:text-3xl" />
+                </div>
+                <p className="text-[10px] lg:text-xl">Interviews</p>
+                <p className="text-[10px] font-semibold lg:text-base">54</p>
+              </div>
+              <div className="flex flex-col gap-3 items-center bg-[#F1F5F9] rounded-full py-10 px-3 text-[#171717] w-full md:rounded-2xl">
+                <div className="rounded-full border border-[#171717] py-2 px-2">
+                  <BsCalendar2Check className="text-xl lg:text-3xl" />
+                </div>
+                <p className="text-[10px] lg:text-xl">Answered</p>
+                <p className="text-[10px] font-semibold lg:text-base">900</p>
+              </div>
+            </div>
+          </div>
+        </div> */}
         {/* User History */}
         <div className="flex justify-between items-center text-varians-vr06 ">
           <p className="text-sm lg:text-2xl font-semibold">User History</p>
