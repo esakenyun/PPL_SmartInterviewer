@@ -7,7 +7,7 @@ export async function handleRegister(email, password) {
       email: email,
       password: password,
     });
-    // console.log(response);
+
     if (response.status === 201) {
       // console.table(response.data);
       return true;
@@ -33,7 +33,7 @@ export async function handleLogin(email, password) {
       return true;
     }
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
     return false;
   }
 }

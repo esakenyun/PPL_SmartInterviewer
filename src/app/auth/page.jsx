@@ -10,6 +10,7 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -22,10 +23,21 @@ export default function SignInPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    if (await handleLogin(email, password)) {
-      router.push("/dashboard");
+    try {
+      if (await handleLogin(email, password)) {
+        router.push("/dashboard");
+      } else {
+        setLoginError("Email or password is incorrect.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginError("An error occurred during login. Please try again later.");
     }
     setIsLoading(false);
+  };
+
+  const handleCloseModal = () => {
+    setLoginError("");
   };
 
   return (
@@ -41,6 +53,16 @@ export default function SignInPage() {
           isLoading: isLoading,
         }}
       />
+      {loginError && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-4 rounded-md">
+            <p className="text-center text-red-500">{loginError}</p>
+            <button className="block mx-auto mt-4 bg-red-500 text-white px-4 py-2 rounded-md" onClick={handleCloseModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
