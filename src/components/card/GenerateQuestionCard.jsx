@@ -3,8 +3,10 @@ import { HiArrowLongRight } from "react-icons/hi2";
 import { FiMic } from "react-icons/fi";
 import { RxTriangleDown } from "react-icons/rx";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function GenerateQuestionCard() {
+  const router = useRouter();
   const questions = [
     {
       question: "Can you provide an example of a challenging software development project you worked on and how you tackled any obstacles that arose?",
@@ -62,7 +64,8 @@ export default function GenerateQuestionCard() {
   };
 
   const submitAnswers = () => {
-    console.log("Answers submitted!");
+    router.push("/dashboard/interview/summary");
+    // console.log("Answers submitted!");
   };
 
   return (
