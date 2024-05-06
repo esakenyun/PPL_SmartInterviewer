@@ -1,9 +1,11 @@
 "use client";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function InterviewPageComponent() {
   const [jobTitle, setJobTitle] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const router = useRouter();
 
   const handleJobSelect = (title) => {
     if (title === "Custom Jobdesc") {
@@ -23,6 +25,7 @@ export default function InterviewPageComponent() {
 
     console.log("Job Title:", jobTitle);
     console.log("Job Description:", jobDescription);
+    router.push("/dashboard/interview/generate-question");
   };
 
   return (
