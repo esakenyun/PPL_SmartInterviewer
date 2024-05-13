@@ -4,7 +4,7 @@ import { GoClock } from "react-icons/go";
 export default function SummaryReport() {
   const router = useRouter();
 
-  const handleSumbit = () => {
+  const handleSubmit = () => {
     router.push("/dashboard");
   };
   return (
@@ -42,7 +42,7 @@ export default function SummaryReport() {
                 <p className="text-xl">Summary Score</p>
                 <p className="font-bold text-6xl">100</p>
               </div>
-              <button className="py-2 px-6 bg-gradient-to-b from-[#F27C45] to-[#FF5049] text-varians-vr06 rounded-full hover:scale-105" onClick={handleSumbit}>
+              <button className="py-2 px-6 bg-gradient-to-b from-[#F27C45] to-[#FF5049] text-varians-vr06 rounded-full hover:scale-105" onClick={handleSubmit}>
                 Finish
               </button>
             </div>

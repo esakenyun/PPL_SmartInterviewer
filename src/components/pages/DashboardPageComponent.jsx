@@ -1,9 +1,16 @@
+"use client";
 import Image from "next/image";
 import { IoIosArrowForward } from "react-icons/io";
 import { BsClipboardCheck, BsClipboardData, BsPersonCheck, BsCalendar2Check } from "react-icons/bs";
 import { GoClock } from "react-icons/go";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPageComponent() {
+  const router = useRouter();
+
+  const handleStartInterview = () => {
+    router.push("/dashboard/interview");
+  };
   return (
     <>
       {/* Topbar Dashboard */}
@@ -20,7 +27,7 @@ export default function DashboardPageComponent() {
           <div className="relative w-1/4 hidden lg:block">
             <Image src="/dashboard.png" width={300} height={300} alt="Interview" className="h-auto w-auto" priority />
             <div className="absolute left-0 top-1/3 w-full h-full flex items-center justify-center">
-              <button className="flex items-center gap-2 bg-[#E2E8F0] text-[#C25F50] px-4 py-2 rounded-3xl font-semibold hover:scale-105">
+              <button className="flex items-center gap-2 bg-[#E2E8F0] text-[#C25F50] px-4 py-2 rounded-3xl font-semibold hover:scale-105" onClick={handleStartInterview}>
                 {" "}
                 <span className="text-2xl">+</span> Start Interview
               </button>
