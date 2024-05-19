@@ -2,58 +2,29 @@
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FiMic } from "react-icons/fi";
 import { RxTriangleDown } from "react-icons/rx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-export default function GenerateQuestionCard() {
+export default function GenerateQuestionCard({ questions }) {
   const router = useRouter();
-  const questions = [
-    {
-      question: "Can you provide an example of a challenging software development project you worked on and how you tackled any obstacles that arose?",
-      answer:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      feedback:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      sampleResponse:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    },
-    {
-      question: "Can you provide an example of a challenging software development project you worked on and how you tackled any obstacles that arose?",
-      answer:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      feedback:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      sampleResponse:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    },
-    {
-      question: "Can you provide an example of a challenging software development project you worked on and how you tackled any obstacles that arose?",
-      answer:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      feedback:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      sampleResponse:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    },
-    {
-      question: "Can you provide an example of a challenging software development project you worked on and how you tackled any obstacles that arose?",
-      answer:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      feedback:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-      sampleResponse:
-        "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries",
-    },
-    // Add more questions here as objects with 'question', 'answer', 'feedback', and 'sampleResponse' keys
-  ];
-
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+  // Ensure questions are not empty before destructuring
+  useEffect(() => {
+    if (questions.length === 0) {
+      router.push("/dashboard/interview"); // Redirect to the previous page or a fallback if no questions
+    }
+  }, [questions, router]);
+
+  if (questions.length === 0) {
+    return <p>Loading questions...</p>; // You can replace this with a loading spinner or message
+  }
 
   const { question, answer, feedback, sampleResponse } = questions[currentQuestionIndex];
 
-  const truncatedAnswer = answer.length > 270 ? answer.slice(0, 270) + "..." : answer;
-  const truncatedFeedback = feedback.length > 250 ? feedback.slice(0, 250) + "..." : feedback;
-  const truncatedSampleResponse = sampleResponse.length > 250 ? sampleResponse.slice(0, 250) + "..." : sampleResponse;
+  // const truncatedAnswer = answer.length > 270 ? answer.slice(0, 270) + "..." : answer;
+  // const truncatedFeedback = feedback.length > 250 ? feedback.slice(0, 250) + "..." : feedback;
+  // const truncatedSampleResponse = sampleResponse.length > 250 ? sampleResponse.slice(0, 250) + "..." : sampleResponse;
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -92,7 +63,7 @@ export default function GenerateQuestionCard() {
             <div className="px-10 py-10 lg:px-14 lg:py-14">
               <div>
                 <p className="font-bold text-center">{question}</p>
-                <p className="pt-5 text-center font-extralight">{truncatedAnswer}</p>
+                <p className="pt-5 text-center font-extralight"></p>
               </div>
             </div>
             <div className="py-10 flex flex-col justify-end items-center gap-2">
@@ -113,7 +84,7 @@ export default function GenerateQuestionCard() {
                   <p className="text-[#E0E0E0]">FeedBack</p>
                   <RxTriangleDown className="text-6xl text-[#999999]" />
                 </div>
-                <div className="text-center pb-2 text-[#E2E8F0] font-extralight">{truncatedFeedback}</div>
+                <div className="text-center pb-2 text-[#E2E8F0] font-extralight"></div>
               </div>
             </div>
             <div className="rounded-3xl bg-gradient-to-r from-[#FFFFFF] to-[#A68C89] p-0.5 h-full">
@@ -122,7 +93,7 @@ export default function GenerateQuestionCard() {
                   <p className="text-[#E0E0E0]">Sample Response</p>
                   <RxTriangleDown className="text-6xl text-[#999999]" />
                 </div>
-                <div className="text-center pb-2 text-[#E2E8F0] font-extralight">{truncatedSampleResponse}</div>
+                <div className="text-center pb-2 text-[#E2E8F0] font-extralight"></div>
               </div>
             </div>
           </div>

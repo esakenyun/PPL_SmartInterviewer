@@ -1,12 +1,13 @@
 "use client";
+import { handleGenerateQuestion } from "@/helpers/interviewHelper";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function InterviewPageComponent() {
+  const router = useRouter();
   const [jobTitle, setJobTitle] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const [customJob, setCustomJob] = useState(false);
-  const router = useRouter();
 
   const handleJobSelect = (title) => {
     if (title === "Custom Jobdesc") {
@@ -22,12 +23,16 @@ export default function InterviewPageComponent() {
     setJobDescription(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Job Title:", jobTitle);
-    console.log("Job Description:", jobDescription);
-    router.push("/dashboard/interview/generate-question");
+    const uploadFormData = {
+      job_title: jobTitle,
+      job_description: jobDescription,
+    };
+
+    const response = await handleGenerateQuestion(uploadFormData);
+    router.push(`/dashboard/interview/generate-question?data=${encodeURIComponent(JSON.stringify(response))}`);
   };
 
   return (
