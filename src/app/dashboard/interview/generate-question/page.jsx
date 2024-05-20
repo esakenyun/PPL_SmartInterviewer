@@ -1,9 +1,10 @@
 "use client";
+
 import GenerateQuestionCard from "@/components/card/GenerateQuestionCard";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
-export default function GenerateQuestionPage() {
+function GenerateQuestionContent() {
   const searchParams = useSearchParams();
   const [questions, setQuestions] = useState([]);
 
@@ -15,4 +16,12 @@ export default function GenerateQuestionPage() {
   }, [searchParams]);
 
   return <>{questions.length > 0 ? <GenerateQuestionCard questions={questions} /> : <div className="flex justify-center items-center text-varians-vr06 h-screen">Loading Question....</div>}</>;
+}
+
+export default function GenerateQuestionPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center text-varians-vr06 h-screen">Loading Question....</div>}>
+      <GenerateQuestionContent />
+    </Suspense>
+  );
 }

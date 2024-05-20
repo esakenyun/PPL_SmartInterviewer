@@ -9,15 +9,14 @@ export default function GenerateQuestionCard({ questions }) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // Ensure questions are not empty before destructuring
   useEffect(() => {
     if (questions.length === 0) {
-      router.push("/dashboard/interview"); // Redirect to the previous page or a fallback if no questions
+      router.push("/dashboard/interview");
     }
   }, [questions, router]);
 
   if (questions.length === 0) {
-    return <p>Loading questions...</p>; // You can replace this with a loading spinner or message
+    return <p>Loading questions...</p>;
   }
 
   const { question, answer, feedback, sampleResponse } = questions[currentQuestionIndex];
