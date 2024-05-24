@@ -1,6 +1,9 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { GoClock } from "react-icons/go";
 
 export default function DashboardHistoryCard({ historyData }) {
+  const router = useRouter();
   const history = historyData || Array(2).fill(null);
 
   const formatDate = (date) =>
@@ -14,6 +17,10 @@ export default function DashboardHistoryCard({ historyData }) {
           hour12: true,
         })
       : "Loading...";
+
+  const handleSeeMore = async (id) => {
+    router.push(`/dashboard/summaryreview/${id}`);
+  };
 
   return (
     <>
@@ -43,7 +50,9 @@ export default function DashboardHistoryCard({ historyData }) {
                       aria-valuemax="100"></div>
                   </div>
                 </div>
-                <button className="py-2 px-3 rounded-md bg-secondary-sc04 hover:scale-105 text-white">See More</button>
+                <button onClick={() => handleSeeMore(item.id)} className="py-2 px-3 rounded-md bg-secondary-sc04 hover:scale-105 text-white">
+                  See More
+                </button>
               </div>
             </div>
           ))}
@@ -73,7 +82,9 @@ export default function DashboardHistoryCard({ historyData }) {
                     </div>
                   </div>
                 </div>
-                <button className="py-2 px-3 rounded-full bg-secondary-sc04 hover:scale-105 text-white text-xs">See More</button>
+                <button onClick={() => handleSeeMore(item.id)} className="py-2 px-3 rounded-full bg-secondary-sc04 hover:scale-105 text-white text-xs">
+                  See More
+                </button>
               </div>
             </div>
           ))}
