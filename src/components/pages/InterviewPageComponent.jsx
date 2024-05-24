@@ -32,7 +32,7 @@ export default function InterviewPageComponent() {
     };
 
     const response = await handleGenerateQuestion(uploadFormData);
-    router.push(`/dashboard/interview/generate-question?data=${encodeURIComponent(JSON.stringify(response))}`);
+    router.push(`/dashboard/interview/generate-question/${response}`);
   };
 
   return (

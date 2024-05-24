@@ -27,7 +27,12 @@ export async function handleLogin(email, password) {
     if (response.status === 200) {
       // console.table(response.data);
       const token = response.data.data.token;
+      const email = response.data.data.user.email;
+      const user_id = response.data.data.user.id;
       // console.log(token);
+
+      Cookies.set("email", email, { expires: 1 });
+      Cookies.set("user_id", user_id, { expires: 1 });
       Cookies.set("token", token, { expires: 1 });
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       return true;
@@ -41,13 +46,18 @@ export async function handleLogin(email, password) {
 export async function handleLogout() {
   try {
     const token = Cookies.get("token");
+    const email = Cookies.get("email");
+    const user_id = Cookies.get("user_id");
+
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    console.log(token);
     const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/logout");
     // console.log(response);
     Cookies.remove("token");
+    Cookies.remove("email");
+    Cookies.remove("user_id");
+
     return true;
   } catch (error) {
     console.log(error.message);

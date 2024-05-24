@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export async function handleGenerateQuestion(uploadFormData) {
   try {
@@ -8,8 +9,95 @@ export async function handleGenerateQuestion(uploadFormData) {
         "Content-Type": "application/json",
       },
     });
-    console.log(response.data.data.questions);
-    return response.data.data.questions;
+    const generateQuestionId = response.data.data.question_id;
+    console.log(generateQuestionId);
+    return generateQuestionId;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handleGetQuestionById(id) {
+  try {
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/questions/${id}`);
+    const getQuestionId = response.data.data.questions;
+    return getQuestionId;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handlePostAnswer(answerData) {
+  try {
+    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/user-answer", answerData, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handleSummaryFeedbackById(id) {
+  try {
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summary/${id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handleGetAllFeedbackSummary() {
+  try {
+    const user_id = Cookies.get("user_id");
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries/${user_id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handleGetFeedBackSummary1() {
+  try {
+    const user_id = Cookies.get("user_id");
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries/${user_id}`, {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response.data.data.slice(0, 2);
   } catch (error) {
     console.log(error.message);
     return false;

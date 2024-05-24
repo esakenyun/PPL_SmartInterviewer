@@ -1,11 +1,13 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-export default function SummaryReportRedirect() {
+
+export default function SummaryReviewRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace("/dashboard/interview");
+    router.back();
   }, []);
 
   return null;
