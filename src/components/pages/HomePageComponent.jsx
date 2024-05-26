@@ -15,16 +15,6 @@ export default function HomePageComponent() {
         </div>
         <Image src="/header_pict.png" width={500} height={500} className="hidden lg:block w-auto h-auto" alt="home" priority />
       </div>
-      {/* Home Section Dulu */}
-      {/* <div className="grid md:grid-cols-2 text-varians-vr06 py-5">
-        <div className="pl-6 py-28 md:pl-40 md:py-28">
-          <p className="font-extrabold text-5xl md:text-7xl leading-none">Smart</p>
-          <p className="font-extralight text-5xl md:text-7xl leading-none -mt-2 md:-mt-5">Interviewer</p>
-          <p className="py-7 font-light text-[8px] w-64 md:w-[370px] md:text-sm">Get ready to approach interviews with confidence and lay the groundwork for your career success with Smart Interviewer Trainer AI</p>
-          <button className="py-2 px-7 bg-gradient-to-b from-[#F27C45] to-[#FF5049] rounded-full text-lg hover:scale-105 border border-black">Start Now</button>
-        </div>
-        <Image src="/header_pict.png" width={500} height={500} className="hidden md:block w-auto h-auto" alt="home" priority />
-      </div> */}
       {/* Features */}
       <div className="py-20 flex flex-col items-center md:py-32" id="features">
         <p className="text-varians-vr06 text-2xl font-normal tracking-[0.2em] md:text-3xl md:tracking-[0.3em]">Features</p>

@@ -8,6 +8,7 @@ export default function History() {
 
   const getAlSummaryFeedback = async () => {
     const response = await handleGetAllFeedbackSummary();
+    // console.log(response);
     setIsAllSummaryFeedback(response);
   };
 

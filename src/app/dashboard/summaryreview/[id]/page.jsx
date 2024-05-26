@@ -8,18 +8,13 @@ export default function SummaryReviewQuestion({ params }) {
 
   const getSummaryData = async () => {
     const response = await handleSummaryFeedbackById(params.id);
-    setSummaryData(response.data); // Save the actual data
-    console.log(response.data);
+    setSummaryData(response.data);
+    // console.log(response.data);
   };
 
   useEffect(() => {
     getSummaryData();
   }, [params.id]);
 
-  return (
-    <>
-      {/* Render only when data is available */}
-      {summaryData ? <SummaryReportCard summaryFeedBack={summaryData.data} /> : <div>Loading...</div>}
-    </>
-  );
+  return <>{summaryData ? <SummaryReportCard summaryFeedBack={summaryData.data} /> : <div>Loading...</div>}</>;
 }

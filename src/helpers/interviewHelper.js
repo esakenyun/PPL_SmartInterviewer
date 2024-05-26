@@ -3,6 +3,11 @@ import Cookies from "js-cookie";
 
 export async function handleGenerateQuestion(uploadFormData) {
   try {
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/generate-question`, uploadFormData, {
       headers: {
         Accept: "application/json",
@@ -10,7 +15,7 @@ export async function handleGenerateQuestion(uploadFormData) {
       },
     });
     const generateQuestionId = response.data.data.question_id;
-    console.log(generateQuestionId);
+    // console.log(generateQuestionId);
     return generateQuestionId;
   } catch (error) {
     console.log(error.message);
@@ -20,7 +25,14 @@ export async function handleGenerateQuestion(uploadFormData) {
 
 export async function handleGetQuestionById(id) {
   try {
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/questions/${id}`);
+    console.log(response);
+
     const getQuestionId = response.data.data.questions;
     return getQuestionId;
   } catch (error) {
@@ -31,6 +43,11 @@ export async function handleGetQuestionById(id) {
 
 export async function handlePostAnswer(answerData) {
   try {
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/user-answer", answerData, {
       headers: {
         Accept: "application/json",
@@ -38,7 +55,7 @@ export async function handlePostAnswer(answerData) {
       },
     });
 
-    console.log(response);
+    // console.log(response);
     return response;
   } catch (error) {
     console.log(error.message);
@@ -48,12 +65,19 @@ export async function handlePostAnswer(answerData) {
 
 export async function handleSummaryFeedbackById(id) {
   try {
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+
     const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summary/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
     });
+
+    // console.log(response);
 
     return response;
   } catch (error) {
@@ -64,12 +88,11 @@ export async function handleSummaryFeedbackById(id) {
 
 export async function handleGetAllFeedbackSummary() {
   try {
-    const user_id = Cookies.get("user_id");
     const token = Cookies.get("token");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries/${user_id}`, {
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -85,12 +108,11 @@ export async function handleGetAllFeedbackSummary() {
 
 export async function handleGetFeedBackSummary1() {
   try {
-    const user_id = Cookies.get("user_id");
     const token = Cookies.get("token");
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries/${user_id}`, {
+    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

@@ -1,7 +1,6 @@
 "use client";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { FiMic } from "react-icons/fi";
-import { RxTriangleDown } from "react-icons/rx";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { handlePostAnswer } from "@/helpers/interviewHelper";
@@ -82,7 +81,7 @@ export default function GenerateQuestionCard({ questions }) {
     return <p className="pl-24 flex justify-center items-center pt-36 text-varians-vr06">Loading Questions...</p>;
   }
 
-  const { question, feedback, sampleResponse } = questions[currentQuestionIndex];
+  const { question } = questions[currentQuestionIndex];
 
   return (
     <>
@@ -128,7 +127,7 @@ export default function GenerateQuestionCard({ questions }) {
               )}
             </div>
           </div>
-          <div className="w-full flex flex-col gap-3">
+          {/* <div className="w-full flex flex-col gap-3">
             <div className="rounded-3xl bg-gradient-to-r from-[#FFFFFF] to-[#A68C89] p-0.5 h-full">
               <div className="w-full h-full bg-[#504E5A] rounded-3xl px-4 py-4">
                 <div className="flex justify-between items-center">
@@ -147,7 +146,7 @@ export default function GenerateQuestionCard({ questions }) {
                 <div className="text-center pb-2 text-[#E2E8F0] font-extralight">{sampleResponse}</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="lg:hidden pb-32"></div>

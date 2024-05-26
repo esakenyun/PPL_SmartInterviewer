@@ -21,7 +21,7 @@ export default function DashboardPageComponent() {
 
   const getFeedback = async () => {
     const response = await handleGetFeedBackSummary1();
-    console.log(response);
+    // console.log(response);
     setIsHistoryFeedback(response);
   };
 

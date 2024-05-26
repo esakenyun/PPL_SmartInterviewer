@@ -3,13 +3,21 @@ import Cookies from "js-cookie";
 
 export async function handleRegister(email, password) {
   try {
-    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/register", {
-      email: email,
-      password: password,
-    });
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_API_URL + "/register",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (response.status === 201) {
-      // console.table(response.data);
       return true;
     }
   } catch (error) {
@@ -20,17 +28,24 @@ export async function handleRegister(email, password) {
 
 export async function handleLogin(email, password) {
   try {
-    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/login", {
-      email: email,
-      password: password,
-    });
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_API_URL + "/login",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
     if (response.status === 200) {
-      // console.table(response.data);
       const token = response.data.data.token;
       const email = response.data.data.user.email;
       const user_id = response.data.data.user.id;
-      // console.log(token);
-
       Cookies.set("email", email, { expires: 1 });
       Cookies.set("user_id", user_id, { expires: 1 });
       Cookies.set("token", token, { expires: 1 });
@@ -38,7 +53,7 @@ export async function handleLogin(email, password) {
       return true;
     }
   } catch (error) {
-    // console.log(error.message);
+    console.log(error.message);
     return false;
   }
 }

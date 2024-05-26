@@ -3,11 +3,11 @@ import GenerateQuestionCard from "@/components/card/GenerateQuestionCard";
 import { handleGetQuestionById } from "@/helpers/interviewHelper";
 import { useEffect, useState } from "react";
 
-function GenerateQuestionPage() {
+function GenerateQuestionPage({ params }) {
   const [questions, setQuestions] = useState([]);
 
   const getQuestion = async () => {
-    const response = await handleGetQuestionById();
+    const response = await handleGetQuestionById(params.id);
     setQuestions(response);
   };
 

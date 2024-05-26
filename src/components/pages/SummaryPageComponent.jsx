@@ -14,7 +14,7 @@ export default function SummaryPageComponent({ feedbacks, totalscore, job_title,
                   {/* Question */}
                   <p className="text-center text-sm">{feedback.question}</p>
                   {/* Feedback */}
-                  <p className="text-[11px] text-center font-extralight">{feedback.answer_text}</p>
+                  <p className="text-[11px] text-center font-extralight">{feedback.answer}</p>
                 </div>
               ))}
             </div>
@@ -29,7 +29,7 @@ export default function SummaryPageComponent({ feedbacks, totalscore, job_title,
               <div className="flex flex-col gap-4 items-center py-16 px-20 bg-[#FA5F47] rounded-[3rem] text-white">
                 <p className="text-xl">Summary Score</p>
                 {/* Total Score */}
-                <p className="font-bold text-6xl">{totalscore}</p>
+                <p className="font-bold text-6xl">{totalscore ?? 0}</p>
               </div>
               <button className="py-2 px-6 bg-gradient-to-b from-[#F27C45] to-[#FF5049] text-varians-vr06 rounded-full hover:scale-105" onClick={handleSubmit}>
                 Finish
@@ -64,7 +64,7 @@ export default function SummaryPageComponent({ feedbacks, totalscore, job_title,
                 {/* Question */}
                 <p className="text-xs text-center">{feedback.question}</p>
                 {/* Feedback */}
-                <p className="text-[10px] font-extralight text-center">{feedback.answer_text}</p>
+                <p className="text-[10px] font-extralight text-center">{feedback.answer}</p>
               </div>
             ))}
             <div className="flex justify-center py-3">

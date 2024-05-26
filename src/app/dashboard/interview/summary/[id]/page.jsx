@@ -27,11 +27,19 @@ export default function SummaryReportId({ params }) {
 
   const { job_title, total_score, feedbacks } = summaryData;
 
-  const totalscore = total_score * 10;
+  const totalscore = total_score;
 
   const formatDate = () => {
     const date = new Date();
-    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+
+    return `${date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    })} `;
   };
 
   const date = formatDate();

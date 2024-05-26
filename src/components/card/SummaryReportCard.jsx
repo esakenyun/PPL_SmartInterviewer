@@ -46,7 +46,7 @@ export default function SummaryReportCard({ summaryFeedBack }) {
             <div className="px-10 py-10 lg:px-14 lg:py-14">
               <div>
                 <p className="font-bold text-center">{currentFeedback.question}</p>
-                <p className="pt-5 text-center font-extralight">{currentFeedback.answer_text}</p>
+                <p className="pt-5 text-center font-extralight">{currentFeedback.answer}</p>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function SummaryReportCard({ summaryFeedBack }) {
                 <div className="text-center pb-2 text-[#E2E8F0] font-extralight">{currentFeedback.feedback}</div>
               </div>
             </div>
-            <div className="rounded-3xl bg-gradient-to-r from-[#FFFFFF] to-[#A68C89] p-0.5 h-full">
+            {/* <div className="rounded-3xl bg-gradient-to-r from-[#FFFFFF] to-[#A68C89] p-0.5 h-full">
               <div className="w-full h-full bg-[#504E5A] rounded-3xl px-4 py-4">
                 <div className="flex justify-between items-center">
                   <p className="text-[#E0E0E0]">Sample Response</p>
@@ -68,7 +68,7 @@ export default function SummaryReportCard({ summaryFeedBack }) {
                 </div>
                 <div className="text-center pb-2 text-[#E2E8F0] font-extralight">{currentFeedback.answer_text}</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
