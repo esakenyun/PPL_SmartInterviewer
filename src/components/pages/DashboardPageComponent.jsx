@@ -67,21 +67,21 @@ export default function DashboardPageComponent() {
                   <BsClipboardData className="text-xl lg:text-3xl" />
                 </div>
                 <p className="text-[10px] text-center lg:text-xl">Average Score</p>
-                <p className="text-[10px] font-semibold lg:text-base">900</p>
+                <p className="text-[10px] font-semibold lg:text-base">19.6</p>
               </div>
               <div className="flex flex-col gap-3 items-center bg-[#F5764E] rounded-full py-10 text-white w-full md:rounded-2xl">
                 <div className="rounded-full border border-white py-2 px-2">
                   <BsPersonCheck className="text-xl lg:text-3xl" />
                 </div>
                 <p className="text-[10px] lg:text-xl">Interviews</p>
-                <p className="text-[10px] font-semibold lg:text-base">54</p>
+                <p className="text-[10px] font-semibold lg:text-base">2</p>
               </div>
               <div className="flex flex-col gap-3 items-center bg-[#F1F5F9] rounded-full py-10 text-[#171717] w-full md:rounded-2xl">
                 <div className="rounded-full border border-[#171717] py-2 px-2">
                   <BsCalendar2Check className="text-xl lg:text-3xl" />
                 </div>
                 <p className="text-[10px] lg:text-xl">Answered</p>
-                <p className="text-[10px] font-semibold lg:text-base">900</p>
+                <p className="text-[10px] font-semibold lg:text-base">10</p>
               </div>
             </div>
           </div>
