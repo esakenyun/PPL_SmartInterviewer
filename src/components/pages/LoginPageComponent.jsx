@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa6";
 export default function LoginPageComponent({ props }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -64,7 +63,7 @@ export default function LoginPageComponent({ props }) {
                 </button>
               </div>
             </form>
-            <p className="text-[10px] font-semibold py-6">- Or Sign in with -</p>
+            {/* <p className="text-[10px] font-semibold py-6">- Or Sign in with -</p>
             <div className="flex gap-2">
               <div className="flex items-center gap-1 border border-black py-2 px-3 rounded-full cursor-pointer hover:bg-black hover:text-varians-vr06">
                 <FaGoogle className="text-md" />
@@ -78,7 +77,7 @@ export default function LoginPageComponent({ props }) {
                 <FaFacebook className="text-md" />
                 <p className="text-[9px] md:text-[10px] font-bold">Facebook</p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <Image src="/header_pict2.png" width={400} height={400} alt="Background" className="w-auto hidden lg:block" priority />
