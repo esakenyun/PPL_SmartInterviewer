@@ -10,7 +10,7 @@ const TimerComponent = ({ trigger, callbackFn, zeroTime }) => {
 
       const interval = setInterval(() => {
         setSeconds((prevSeconds) => {
-          if (prevSeconds >= 3) {
+          if (prevSeconds >= 120) {
             clearInterval(interval);
             setSeconds(0);
             return prevSeconds;
@@ -24,7 +24,7 @@ const TimerComponent = ({ trigger, callbackFn, zeroTime }) => {
   }, [trigger]);
 
   useEffect(() => {
-    if (seconds >= 3) {
+    if (seconds >= 120) {
       callbackFn();
     }
   }, [seconds]);
