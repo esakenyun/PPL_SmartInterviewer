@@ -104,7 +104,7 @@ export default function GenerateQuestionCard({ questions, questionId }) {
       </p>
 <Link
                   href={`/dashboard/interview/generate-question/${questionId}`}
-                  className="pl-24 flex justify-center items-center rounded-full bg-[#FA5F47] animate-pulse"
+                  className="pl-24 w-fit flex justify-center items-center rounded-full bg-[#FA5F47] animate-pulse"
                 >
                  <span className="font-bold font-xl text-white">
                     Cek apakah pertanyaan sudah selesai diproses
