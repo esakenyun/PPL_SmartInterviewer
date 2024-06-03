@@ -103,7 +103,7 @@ export default function GenerateQuestionCard({ questions, questionId }) {
       </p>
 <button
                   onClick={()=>{window.location.reload()}}
-                  className="pl-24  rounded-full w-fit bg-[#FA5F47] animate-pulse"
+                  className="pl-24 flex justify-center items-center rounded-full  bg-[#FA5F47] animate-pulse"
                 >
                  <span className="font-bold font-xl text-white">
                     Cek apakah pertanyaan sudah selesai diproses
