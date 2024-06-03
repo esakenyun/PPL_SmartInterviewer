@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { handlePostAnswer } from "@/helpers/interviewHelper";
 import { MdRecordVoiceOver } from "react-icons/md";
 import TimerComponent from "../TimerComponent";
+import Link from 'next/link'
 
 export default function GenerateQuestionCard({ questions, questionId }) {
   const router = useRouter();
@@ -101,14 +102,14 @@ export default function GenerateQuestionCard({ questions, questionId }) {
       <p className="pl-24 flex justify-center items-center pt-36 text-varians-vr06">
         Loading Questions... Sistem kami lagi memproses pertanyaan mu, mohon bersabar yaa :)
       </p>
-<button
-                  onClick={()=>{window.location.reload()}}
-                  className="pl-24 flex justify-center items-center rounded-full  bg-[#FA5F47] animate-pulse"
+<Link
+                  href={`/dashboard/interview/generate-question/${questionId}`}
+                  className="pl-24 flex justify-center items-center rounded-full bg-[#FA5F47] animate-pulse"
                 >
                  <span className="font-bold font-xl text-white">
                     Cek apakah pertanyaan sudah selesai diproses
                   </span>
-                </button>
+                </Link>
 </>
     );
   }
