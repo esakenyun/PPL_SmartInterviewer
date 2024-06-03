@@ -103,7 +103,7 @@ export default function GenerateQuestionCard({ questions, questionId }) {
       </p>
 <button
                   onClick={()=>{window.location.reload()}}
-                  className="py-3 px-3 rounded-full w-fit bg-[#FA5F47] animate-pulse"
+                  className="pl-24  rounded-full w-fit bg-[#FA5F47] animate-pulse"
                 >
                  <span className="font-bold font-xl text-white">
                     Cek apakah pertanyaan sudah selesai diproses
