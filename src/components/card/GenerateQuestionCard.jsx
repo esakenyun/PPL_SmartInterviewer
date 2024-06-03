@@ -4,12 +4,17 @@ import { FiMic } from "react-icons/fi";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { handlePostAnswer } from "@/helpers/interviewHelper";
+import { MdRecordVoiceOver } from "react-icons/md";
+import TimerComponent from "../TimerComponent";
 
-export default function GenerateQuestionCard({ questions }) {
+export default function GenerateQuestionCard({ questions, questionId }) {
   const router = useRouter();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
   const [answers, setAnswers] = useState(Array(questions.length).fill(""));
+  const [timerTrigger, setTimerTrigger] = useState(false);
+  const [nextBeforeAnswer, setNextBeforeAnswer] = useState(false);
+  const [zeroTime, setZeroTime] = useState(false);
 
   const recognitionRef = useRef(null);
 
@@ -50,21 +55,34 @@ export default function GenerateQuestionCard({ questions }) {
   const handleToggleRecording = () => {
     if (!isRecording) {
       startRecording();
+      setZeroTime(true);
+      setTimerTrigger((prev) => !prev);
     } else {
       stopRecording();
+      setTimerTrigger((prev) => !prev);
     }
   };
 
   const handleNextQuestion = () => {
+    if (currentQuestionIndex >= answers.length) {
+      setNextBeforeAnswer(true);
+      return;
+    }
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setZeroTime(false);
     } else {
       submitAnswers();
     }
   };
 
+  const handleCloseModal = () => {
+    setNextBeforeAnswer(false);
+  };
+
   const submitAnswers = async () => {
     const interviewData = {
+      id: questionId,
       interviews: questions.map((question, index) => ({
         question: question.question,
         answer: answers[index],
@@ -78,26 +96,47 @@ export default function GenerateQuestionCard({ questions }) {
   };
 
   if (questions.length === 0) {
-    return <p className="pl-24 flex justify-center items-center pt-36 text-varians-vr06">Loading Questions...</p>;
+    return (
+      <p className="pl-24 flex justify-center items-center pt-36 text-varians-vr06">
+        Loading Questions...
+      </p>
+    );
   }
 
   const { question } = questions[currentQuestionIndex];
+
+  const stopRecordAfterTwoMinutes = () => {
+    stopRecording();
+    setTimerTrigger(false);
+  };
 
   return (
     <>
       <div className="pt-6 lg:pt-16 px-5 lg:pl-64 lg:px-32">
         <div className="flex justify-center items-center gap-3">
           {questions.map((_, index) => (
-            <div key={index} className={`w-3 h-3 rounded-full ${currentQuestionIndex === index ? "bg-[#FA5F47]" : "bg-[#999999]"}`}></div>
+            <div
+              key={index}
+              className={`w-3 h-3 rounded-full ${
+                currentQuestionIndex === index ? "bg-[#FA5F47]" : "bg-[#999999]"
+              }`}
+            ></div>
           ))}
         </div>
       </div>
       <div className="pt-5 px-5 lg:pl-64 lg:px-32 flex justify-between items-center">
         <div>
-          <p className="text-[#FA5F47]">Question No {currentQuestionIndex + 1}</p>
+          <p className="text-[#FA5F47]">
+            Question No {currentQuestionIndex + 1}
+          </p>
         </div>
-        <div className="flex items-center gap-5 hover:scale-105 cursor-pointer" onClick={handleNextQuestion}>
-          <p className="text-[#E9E4E3]">{currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}</p>
+        <div
+          className="flex items-center gap-5 hover:scale-105 cursor-pointer"
+          onClick={handleNextQuestion}
+        >
+          <p className="text-[#E9E4E3]">
+            {currentQuestionIndex < questions.length - 1 ? "Next" : "Submit"}
+          </p>
           <HiArrowLongRight className="text-[#FA5F47] text-3xl" />
         </div>
       </div>
@@ -107,22 +146,38 @@ export default function GenerateQuestionCard({ questions }) {
             <div className="px-10 py-10 lg:px-14 lg:py-14">
               <div>
                 <p className="font-bold text-center">{question}</p>
-                {answers[currentQuestionIndex] && <p className="pt-5 text-center font-extralight">{answers[currentQuestionIndex]}</p>}
+                {answers[currentQuestionIndex] && (
+                  <p className="pt-5 text-center font-extralight">
+                    {answers[currentQuestionIndex]}
+                  </p>
+                )}
               </div>
             </div>
             <div className="py-10 flex flex-col justify-end items-center gap-2">
-              <div className="flex gap-1 text-[#FA5F47] justify-center">
-                <p className="font-bold text-xl">00:00</p>
-                <p className="font-bold text-xl">/</p>
-                <p className="font-bold text-xl">02:00</p>
-              </div>
+              <TimerComponent
+                trigger={timerTrigger}
+                callbackFn={stopRecordAfterTwoMinutes}
+                zeroTime={zeroTime}
+              />
               {isRecording ? (
-                <button onClick={handleToggleRecording} className="py-3 px-3 rounded-full w-fit bg-[#FA5F47] animate-pulse">
-                  <FiMic className="text-varians-vr06 text-2xl" />
+                <button
+                  onClick={handleToggleRecording}
+                  className="flex gap-2 py-3 px-3 rounded-full w-fit bg-[#FA5F47] animate-pulse"
+                >
+                  <MdRecordVoiceOver className="text-varians-vr06 text-2xl" />{" "}
+                  <span className="font-bold font-xl text-white">
+                    Stop Record
+                  </span>
                 </button>
               ) : (
-                <button onClick={handleToggleRecording} className="py-3 px-3 rounded-full w-fit bg-[#FA5F47]">
+                <button
+                  onClick={handleToggleRecording}
+                  className="flex gap-2 py-3 px-3 rounded-full w-fit bg-[#FA5F47]"
+                >
                   <FiMic className="text-varians-vr06 text-2xl" />
+                  <span className="font-bold font-xl text-white">
+                    Start Record
+                  </span>
                 </button>
               )}
             </div>
@@ -150,6 +205,22 @@ export default function GenerateQuestionCard({ questions }) {
         </div>
       </div>
       <div className="lg:hidden pb-32"></div>
+      {nextBeforeAnswer && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
+          <div className="bg-white p-6 rounded-md">
+            <p className="text-center text-red-500 text-2xl">
+              Please answer this question first before move to the next
+              question!
+            </p>
+            <button
+              className="block mx-auto mt-4 bg-red-500 text-white px-4 py-2 rounded-md"
+              onClick={handleCloseModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

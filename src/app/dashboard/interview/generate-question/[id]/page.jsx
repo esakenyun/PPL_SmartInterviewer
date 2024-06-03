@@ -15,7 +15,7 @@ function GenerateQuestionPage({ params }) {
     getQuestion();
   }, []);
 
-  return <GenerateQuestionCard questions={questions} />;
+  return <GenerateQuestionCard questions={questions} questionId={params.id} />;
 }
 
 export default GenerateQuestionPage;

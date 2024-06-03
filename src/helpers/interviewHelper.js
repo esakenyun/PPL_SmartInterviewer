@@ -8,12 +8,16 @@ export async function handleGenerateQuestion(uploadFormData) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/generate-question`, uploadFormData, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_URL}/generate-question`,
+      uploadFormData,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const generateQuestionId = response.data.data.question_id;
     // console.log(generateQuestionId);
     return generateQuestionId;
@@ -30,7 +34,9 @@ export async function handleGetQuestionById(id) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/questions/${id}`);
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + `/questions/${id}`
+    );
     console.log(response);
 
     const getQuestionId = response.data.data.questions;
@@ -48,12 +54,16 @@ export async function handlePostAnswer(answerData) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/user-answer", answerData, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(
+      process.env.NEXT_PUBLIC_API_URL + "/user-answer",
+      answerData,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // console.log(response);
     return response;
@@ -70,12 +80,15 @@ export async function handleSummaryFeedbackById(id) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
 
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summary/${id}`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + `/feedback-summary/${id}`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     // console.log(response);
 
@@ -92,13 +105,15 @@ export async function handleGetAllFeedbackSummary() {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
-
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
     return response.data.data;
   } catch (error) {
     console.log(error.message);
@@ -112,14 +127,40 @@ export async function handleGetFeedBackSummary1() {
     if (token) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     }
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`, {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + `/feedback-summaries`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     return response.data.data.slice(0, 2);
+  } catch (error) {
+    console.log(error.message);
+    return false;
+  }
+}
+
+export async function handleGetStatistics() {
+  try {
+    const token = Cookies.get("token");
+    if (token) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    }
+    const response = await axios.get(
+      process.env.NEXT_PUBLIC_API_URL + `/statistics`,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    return response.data.data;
   } catch (error) {
     console.log(error.message);
     return false;
