@@ -102,8 +102,8 @@ export default function GenerateQuestionCard({ questions, questionId }) {
         Loading Questions... Sistem kami lagi memproses pertanyaan mu, mohon bersabar yaa :)
       </p>
 <button
-                  onClick={handleToggleRecording}
-                  className="py-3 px-3 rounded-full w-fit bg-sc04 animate-pulse"
+                  onClick={()=>{window.location.reload()}}
+                  className="py-3 px-3 rounded-full w-fit bg-[#FA5F47] animate-pulse"
                 >
                  <span className="font-bold font-xl text-white">
                     Cek apakah pertanyaan sudah selesai diproses
